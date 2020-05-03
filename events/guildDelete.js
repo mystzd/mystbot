@@ -1,5 +1,5 @@
 const { RichEmbed } = require('discord.js');
-module.exports = async(guild) => {
+module.exports = async(message, guild) => {
 	if(!guild.available) return;
 
 	const channel = this.client.channels.get("706378435773202432");
