@@ -1,6 +1,9 @@
 # config
 config.js
 
+#.swp files
+*.swp
+
 # Logs
 logs
 *.log
