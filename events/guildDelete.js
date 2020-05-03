@@ -1,5 +1,5 @@
 const { RichEmbed } = require('discord.js');
-module.export = async(guild) => {
+module.exports = async(guild) => {
 	if(!guild.available) return;
 
 	const channel = this.client.channels.get("706378435773202432");
@@ -14,5 +14,5 @@ module.export = async(guild) => {
 	em.setFooter(`Mystbot v0.01`);
 	em.setTimestamp();
 
-	channel.send(em);
+	await channel.send({ em }).catch(() => null);
 }

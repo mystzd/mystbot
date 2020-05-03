@@ -11,12 +11,12 @@ module.exports = async(guild) => {
 	const em = new RichEmbed()
 	em.setTitle("mystbot joined a new server");
 	em.setDescription(guild.name);
-	em.setColor(0x00FFFF);
+	em.setColor(0xFF00FF);
 	em.setThumbnail(guild.iconURL());
 	em.addField('Owner', guild.owner.user.tag);
 	em.addField('Member Count', guild.memberCount);
 	em.setFooter(`Mystbot v0.01`);
 	em.setTimestamp();
 
-	channel.send(em);
+	await channel.send({ em }).catch(() => null);
 }
