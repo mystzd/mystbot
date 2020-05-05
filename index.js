@@ -4,6 +4,8 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
 const path = require("path");
 require("./modules/prototypes.js");
+const jsonfile = require('jsonfile');
+
 
 class Diamond extends Discord.Client {
   constructor(options) {
@@ -49,9 +51,24 @@ client.on('message', message => {
 
     console.log(`Message Author: ${message.author.tag}\nChannel ID: ${message.channel.id}\nMessage Author: ${message.id}\nMessage Content: ${message.content}`); //logging for testing purposes
 
+    const fs = require('fs');
+    
+    const cached = require('./cachedMessages.json');
 
-    
-    
+    var messageAuthor = message.author.id;
+    const messageContent = message.content
+
+    let cachingData = {
+	authorID: messageAuthor,
+	content: messageContent
+    };
+
+    cached.push(cachingData);
+
+    fs.writeFile('./cachedMessages.json', JSON.stringify(cached, null, 2), err => {
+	if (err) throw err;
+	console.log('wrote that hoe');
+    });
     
 });
 
@@ -73,7 +90,7 @@ client.on('message', message => {
     events.forEach(x => {
       if(!x.endsWith(".js")) return; // ignore non js files.
       const ev = require(`./events/${x}`);
-      if(typeof ev !== "function") return console.warn(`./events/${x} does not export a funtion, aborting load...`);
+      if(typeof ev !== "function") return console.warn(`./events/${x} does not export a function, aborting load...`);
       const name = x.split(".")[0];
       client.on(name, ev.bind(null, client));
       delete require.cache[require.resolve(`./events/${x}`)];

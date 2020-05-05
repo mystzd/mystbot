@@ -6,6 +6,7 @@ config.js~
 
 #cachedmessages.json
 cachedMessages.json
+cachedMessages.json~
 
 # Logs
 logs
