@@ -38,10 +38,43 @@ require("./modules/functions.js")(client);
 const Idiot = require("idiotic-api")
 client.API = new Idiot.Client("TxdGgJJl3C1jBCZYzmmd", {dev: true});
 client
-  .on("error", (err) => console.error(err))
-  .on("warn", (w) => console.warn(w))
-  .on("disconnect", () => console.warn("Bot disconnected"))
-  .on("reconnecting", () => console.debug("Bot reconnecting..."));
+    .on("error", (err) => console.error(err))
+    .on("warn", (w) => console.warn(w))
+    .on("disconnect", () => console.warn("Bot disconnected"))
+    .on("reconnecting", () => console.debug("Bot reconnecting..."))
+// command logger
+// put it into a json file
+client.on('message', message => {
+    if(!message.content.startsWith('my.')) return; //dont log messages that arent bot commands
+
+    console.log(`Message Author: ${message.author.tag}\nChannel ID: ${message.channel.id}\nMessage Author: ${message.id}\nMessage Content: ${message.content}`); //logging for testing purposes
+
+    var table = {
+	messages: []
+    }
+
+    author = message.author.id
+    messageContent = message.content
+
+    table.messages.push({ author: author, messageContent: messageContent });
+
+    var json = JSON.stringify(table);
+
+    var fs = require('fs');
+
+    fs.readFile('./cachedMessages.json', 'utf8', function readFileCallback(err, data) {
+	if (err) {
+	    console.log(err)
+	} else {
+	    table = JSON.parse(data) //its now an object
+	    table.messages.push({ author: author, messageContent: messageContent }); //adding data
+	    json = JSON.stringify(table);
+	    fs.writeFile('cachedMessages.json', json, 'utf8') // write that hoe back
+	}
+    })
+    
+    
+});
 
 (async() => {
   

@@ -4,6 +4,9 @@ config.js~
 #.swp files
 *.swp
 
+#cachedmessages.json
+cachedMessages.json
+
 # Logs
 logs
 *.log
