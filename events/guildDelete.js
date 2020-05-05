@@ -2,7 +2,7 @@ const { RichEmbed } = require('discord.js');
 module.exports = async(message, guild) => {
 	if(!guild.available) return;
 
-	const channel = this.client.channels.get("706378435773202432");
+	const channel = client.channels.get("706378435773202432");
 
 	const em = new RichEmbed();
 	em.setTitle("mystbot left a server");
