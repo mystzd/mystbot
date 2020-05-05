@@ -49,29 +49,8 @@ client.on('message', message => {
 
     console.log(`Message Author: ${message.author.tag}\nChannel ID: ${message.channel.id}\nMessage Author: ${message.id}\nMessage Content: ${message.content}`); //logging for testing purposes
 
-    var table = {
-	messages: []
-    }
 
-    author = message.author.id
-    messageContent = message.content
-
-    table.messages.push({ author: author, messageContent: messageContent });
-
-    var json = JSON.stringify(table, null, 2);
-
-    var fs = require('fs');
-
-    fs.readFile('./cachedMessages.json', 'utf8', function readFileCallback(err, data) {
-	if (err) {
-	    console.log(err)
-	} else {
-	    table = JSON.parse(data) //its now an object
-	    table.messages.push({ author: author, messageContent: messageContent }); //adding data
-	    json = JSON.stringify(table);
-	    fs.writeFile('cachedMessages.json', json, 'utf8') // write that hoe back
-	}
-    })
+    
     
     
 });
