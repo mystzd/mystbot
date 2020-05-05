@@ -1,0 +1,4 @@
+module.exports = {
+	token: "NDUwNDE5MzA1NjcxMDMyODMy.XrDbOw.n_zPGFVjs-qlxyJj6OxwJz8JqYs",
+	prefix: "my."
+}
