@@ -49,8 +49,6 @@ client
 client.on('message', message => {
     if(!message.content.startsWith('my.')) return; //dont log messages that arent bot commands
 
-    console.log(`Message Author: ${message.author.tag}\nChannel ID: ${message.channel.id}\nMessage Author: ${message.id}\nMessage Content: ${message.content}`); //logging for testing purposes
-
     const fs = require('fs');
     
     const cached = require('./cachedMessages.json');
@@ -67,8 +65,8 @@ client.on('message', message => {
 
     fs.writeFile('./cachedMessages.json', JSON.stringify(cached, null, 2), err => {
 	if (err) throw err;
-	console.log('wrote that hoe');
     });
+    
     
 });
 
