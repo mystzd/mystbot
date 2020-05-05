@@ -58,7 +58,7 @@ client.on('message', message => {
 
     table.messages.push({ author: author, messageContent: messageContent });
 
-    var json = JSON.stringify(table);
+    var json = JSON.stringify(table, null, 2);
 
     var fs = require('fs');
 
