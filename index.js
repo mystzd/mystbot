@@ -47,7 +47,9 @@ client
 // command logger
 // put it into a json file
 client.on('message', message => {
-    if(!message.content.startsWith('my.')) return; //dont log messages that arent bot commands
+    // time to not log messages that arent commands
+
+    if(!message.content.startsWith('my.')) return;
 
     const fs = require('fs');
     
@@ -72,6 +74,7 @@ client.on('message', message => {
     
     
 });
+
 
 (async() => {
   
