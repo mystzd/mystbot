@@ -24,7 +24,7 @@ class pokemonLookup extends Command {
 	    .then(res => res.json())
 	    .then(data => {
 		const name = data.species.name;
-		const url = data.species.url;
+		const url = `https://pokemondb.net/pokedex/${pokemon}`;
 		const weight = data.weight / 10;
 		const em = new RichEmbed();
 		em.setTitle('Pokemon Stats');

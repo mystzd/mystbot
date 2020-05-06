@@ -8,6 +8,8 @@ config.js~
 cachedMessages.json
 cachedMessages.json~
 
+*.js~
+
 # Logs
 logs
 *.log
