@@ -57,8 +57,8 @@ client.on('message', message => {
     const messageContent = message.content
 
     let cachingData = {
-	authorID: messageAuthor,
-	content: messageContent
+	messageAuthor,
+	messageContent
     };
 
     cached.push(cachingData);
