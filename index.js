@@ -53,12 +53,11 @@ client.on('message', message => {
     
     const cached = require('./cachedMessages.json');
 
-    var messageAuthor = message.author.id;
-    const messageContent = message.content
+    const messageAuthor = message.author.id;
+    const messageContent = message.content;
 
     let cachingData = {
-	messageAuthor,
-	messageContent
+	[message.author.id]: [message.content] 
     };
 
     cached.push(cachingData);
@@ -66,6 +65,10 @@ client.on('message', message => {
     fs.writeFile('./cachedMessages.json', JSON.stringify(cached, null, 2), err => {
 	if (err) throw err;
     });
+
+    const jq = require('node-jq');
+
+    const filter = '.[].messageAuthor';
     
     
 });

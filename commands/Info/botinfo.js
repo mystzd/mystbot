@@ -15,10 +15,8 @@ class BotInfo extends Command {
     }
 
     async run(message, args) {
-	const h = await this.client.hastebin(`Bot Uptime: ${Math.floor(client.uptime / 60000)} minutes\n`);  
 	var bi = new RichEmbed();
 	bi.setTitle("Mystbot Info");
-	bi.setDescription(`Extended information [here](${h})`, "js");
 	bi.setColor("RANDOM");
 	bi.addField("Creator", "mystzd#2940");
 	bi.addField("Guilds Currently In", `${client.guilds.size}`);
