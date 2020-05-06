@@ -30,7 +30,7 @@ class pokemonLookup extends Command {
 		em.setTitle('Pokemon Stats');
 		em.setDescription(`Name: [${name.toUpperCase()}](${url})`);
 		em.addField('Pokedox Number', data.id);
-		em.addField('Weight (kg)', weight);
+		em.addField('Weight', `${weight}kg`);
 		em.setThumbnail(data.sprites.front_default);
 
 		message.channel.send(em)
